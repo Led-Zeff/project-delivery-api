@@ -1,0 +1,7 @@
+POST http://localhost:8080/shopping
+Content-Type: application/json
+
+{
+  "name": "verduras",
+  "quantity": 20
+}

@@ -3,8 +3,7 @@ package com.project.delivery.project.delivery.api.controller;
 import java.util.List;
 
 import com.project.delivery.project.delivery.api.model.Shopping;
-import com.project.delivery.project.delivery.api.repository.ShoppingRepository;
-import com.project.delivery.project.delivery.api.service.ShoppingNotificationService;
+import com.project.delivery.project.delivery.api.service.ShoppingService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,18 +17,15 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("shopping")
 @RequiredArgsConstructor
 public class ShoppingController {
-  private final ShoppingRepository shoppingRepository;
-  private final ShoppingNotificationService shoppingNotificationService;
+  private final ShoppingService shoppingService;
 
   @GetMapping
   public List<Shopping> getShopping() {
-    return shoppingRepository.findAll();
+    return shoppingService.list();
   }
 
   @PostMapping
   public Shopping addShopping(@RequestBody Shopping shopping) {
-    Shopping inserted = shoppingRepository.insert(shopping);
-    shoppingNotificationService.notifyNewShopping(inserted);
-    return inserted;
+    return shoppingService.addShoppingItem(shopping);
   }
 }
