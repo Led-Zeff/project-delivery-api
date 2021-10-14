@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 //@ConfigurationProperties(prefix = "shopping.notification.service")
 @Service
 public class ShoppingNotificationService extends NotificationService<ShoppingEventDto<?>> {
-  public static final String prefix = "/shopping";
+  public static final String PREFIX = "/shopping";
 
   public ShoppingNotificationService(SimpMessagingTemplate template) {
-    super(prefix, template);
+    super(PREFIX, template);
   }
 
   public void notifyNewShopping(Shopping shopping) {

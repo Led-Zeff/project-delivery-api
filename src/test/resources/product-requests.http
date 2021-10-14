@@ -1,1 +1,14 @@
 GET http://localhost:8080/products/search/
+
+############
+
+GET http://localhost:8080/products/recent
+
+############
+
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+  "name": "Jugo"
+}

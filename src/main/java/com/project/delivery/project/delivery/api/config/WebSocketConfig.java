@@ -1,5 +1,6 @@
 package com.project.delivery.project.delivery.api.config;
 
+import com.project.delivery.project.delivery.api.service.ProductNotificationService;
 import com.project.delivery.project.delivery.api.service.ShoppingNotificationService;
 
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
   @Override
   public void configureMessageBroker(MessageBrokerRegistry registry) {
-    registry.enableSimpleBroker(ShoppingNotificationService.prefix);
+    registry.enableSimpleBroker(ShoppingNotificationService.PREFIX, ProductNotificationService.PREFIX);
   }
 
   @Override

@@ -7,6 +7,8 @@ import com.project.delivery.project.delivery.api.service.ProductService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,15 @@ public class ProductController {
   @GetMapping("/search/{query}")
   public List<Product> findProducts(@PathVariable String query) {
     return productService.findProduct(query);
+  }
+
+  @PostMapping
+  public Product addProduct(@RequestBody Product product) {
+    return productService.createProduct(product);
+  }
+
+  @GetMapping("/recent")
+  public List<Product> getRecentProducts() {
+    return productService.getAllOrderByLastTimeAdded();
   }
 }
